@@ -30,6 +30,7 @@ variable "subnet_prefix" {
   default     = ["10.150.0.0/24"]
 }
 
+# --- ubuntu virtual machine configurations -------
 variable "hostname" {
   description = "Virtual machine hostname. Used for local hostname, DNS, and storage-related names."
   default     = "ubuntu"
@@ -70,24 +71,19 @@ variable "admin_password" {
   type        = string
 }
 
-
-/*Windows*/
-
-storage Image_reference {
-publisher="MicrosoftWindowsServer"
-offer="WindowsServer"
-sku="16.04-LTS"
-version="latest"
-}
-storage_os_disck{
-  name              = "myosdisk1"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+variable "os_disk_linux" {
+  description = "GB space on OS disk"
+  default = "60"
+  
 }
 
-
-
-os_profile {
-  computer_name: 
+variable "tags" {
+  description = "Tags de los recuros de azure del equipo"
+  default = {
+    "CREATEDBY" : "NAMELESS"
+    "DPT" : "VENTAS"
+    "AMBIENTE" : "PRD"
+  }
+  
 }
+
