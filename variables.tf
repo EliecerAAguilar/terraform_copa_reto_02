@@ -73,3 +73,21 @@ variable "admin_password" {
 
 /*Windows*/
 
+storage Image_reference {
+publisher="MicrosoftWindowsServer"
+offer="WindowsServer"
+sku="16.04-LTS"
+version="latest"
+}
+storage_os_disck{
+  name              = "myosdisk1"
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+    managed_disk_type = "Standard_LRS"
+}
+
+
+
+os_profile {
+  computer_name: 
+}
