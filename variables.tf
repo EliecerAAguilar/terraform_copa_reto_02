@@ -75,8 +75,8 @@ variable "admin_password" {
 
 variable "os_disk_linux" {
   description = "GB space on OS disk"
-  default = "60"
-  
+  default     = "60"
+
 }
 
 variable "tags" {
@@ -86,5 +86,5 @@ variable "tags" {
     "DPT" : "VENTAS",
     "AMBIENTE" : "PRD"
   }
-  
+
 }

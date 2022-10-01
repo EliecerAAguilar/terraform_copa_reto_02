@@ -5,13 +5,14 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">= 2.26"
     }
-  } 
+  }
 
 
 }
 
 provider "azurerm" {
   features {
+
   }
 }
 
@@ -100,11 +101,11 @@ resource "azurerm_linux_virtual_machine" "vm_terraform" {
   #disk_size_gb =  "60"
   custom_data = filebase64("script.sh")
 
-  network_interface_ids         = ["${azurerm_network_interface.terraform_nic.id}"]
+  network_interface_ids = ["${azurerm_network_interface.terraform_nic.id}"]
 
-  computer_name  = var.hostname
-  admin_username = var.admin_username
-  admin_password = var.admin_password 
+  computer_name                   = var.hostname
+  admin_username                  = var.admin_username
+  admin_password                  = var.admin_password
   disable_password_authentication = false
 
   source_image_reference {
@@ -114,10 +115,10 @@ resource "azurerm_linux_virtual_machine" "vm_terraform" {
     version   = var.image_version
   }
 
-  os_disk  {
-    name              = "${var.hostname}_osdisk"
-    storage_account_type  = "Standard_LRS"
-    caching           = "ReadWrite"
+  os_disk {
+    name                 = "${var.hostname}_osdisk"
+    storage_account_type = "Standard_LRS"
+    caching              = "ReadWrite"
   }
 
 }
