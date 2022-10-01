@@ -97,8 +97,8 @@ resource "azurerm_linux_virtual_machine" "vm_terraform" {
   location            = var.location
   resource_group_name = azurerm_resource_group.rg_nameless.name
   size                = var.vm_size
-  disk_size_gb =  var.os_disk_linux
-  custom_data = filebase64("customdata.sh")
+  #disk_size_gb =  "60"
+  custom_data = filebase64("script.sh")
 
   network_interface_ids         = ["${azurerm_network_interface.terraform_nic.id}"]
 
@@ -121,6 +121,5 @@ resource "azurerm_linux_virtual_machine" "vm_terraform" {
   }
 
 }
-
 
 
