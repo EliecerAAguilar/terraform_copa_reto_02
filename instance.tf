@@ -1,19 +1,19 @@
-# Configure the Microsoft Azure Provider.
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 2.26"
-    }
-  } 
+# # Configure the Microsoft Azure Provider.
+# terraform {
+#   required_providers {
+#     azurerm = {
+#       source  = "hashicorp/azurerm"
+#       version = ">= 2.26"
+#     }
+#   } 
 
 
-}
+# }
 
-provider "azurerm" {
-  features {
-  }
-}
+# provider "azurerm" {
+#   features {
+#   }
+# }
 
 resource "azurerm_vitual_machine" "Test01-instance" {
     name = "${var.prefix}-vm01"
