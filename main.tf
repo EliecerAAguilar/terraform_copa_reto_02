@@ -7,7 +7,7 @@ terraform {
     }
   } 
 
-  required_version = ">= 0.14.9"
+
 }
 
 provider "azurerm" {
@@ -123,56 +123,4 @@ resource "azurerm_linux_virtual_machine" "vm_terraform" {
 }
 
 
-/*Windows*/
 
-storage Image_reference {
-publisher="MicrosoftWindowsServer"
-offer="WindowsServer"
-sku="2019-Datacenter"
-version="latest"
-}
-storage_os_disck{
-  name              = "${var.prefix}-OS_disk01"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-}
-os_profile {
-  computer_name = "PIP-SRV-PROD-01-AZ"
-  admin_username = "admin"
-  admin_password = "p4ssword"  
-}
-
-os_profile_windows_config {
-  #disable_password_authentication = false
-  #ssh_keys{
-  # key_data = file("mykey.pub")
-  # path = "/home/linuxusr/.shh/authorized_keys"
-  #}
-  }
-
-resource "azurerm_network_security_group" "allow-ssh" {
-  name= "RG-PROD-01"
-  location = "East US"
-  resource_group_name = azurerm_resource_group.test02.name
-
-  security_rule {
-   
-    access = ""
-    protocol = ""
-    source_port_range=""
-    destination_address_prefix =""
-    destinationsource_address_prefix = "*" 
-    name                       = "HTTP"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_ranges =  "*"
-    destination_port_range = "3389"
-    source_address_prefix = var.ssh_source_address
-    destination_address_prefixes =  "*"
-  }
-  
-  
-}
